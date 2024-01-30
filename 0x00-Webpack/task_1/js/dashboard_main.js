@@ -1,4 +1,4 @@
-// js/dashboard_main.js
+
 import $ from 'jquery';
 import _ from 'lodash';
 
@@ -12,14 +12,10 @@ $(document).ready(function () {
   let count = 0;
 
   function updateCounter() {
-    count += 1;
-    $('#count').text(`${count} clicks on the button`);
-  }
+    count ++;
+    $("#count").html(`${count} clicks on the button`);
+  };
 
-  // Debounce the updateCounter function
-  const debouncedUpdateCounter = _.debounce(updateCounter, 1000);
 
-  // Attach the debounced function to the button click event
-  $('#startButton').on('click', debouncedUpdateCounter);
-});
+  $('button').on('click', _.debounce(updateCounter, 500));
 
