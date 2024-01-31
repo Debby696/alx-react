@@ -10,6 +10,11 @@ module.exports = {
     new CleanWebpackPlugin(),
   ],
   devtool: 'inline-source-map',
+  optimization: {
+    splitchunks: {
+      chunks: 'all',
+    }
+  }
   mode: 'development',
   entry: {
     header: {
@@ -19,6 +24,12 @@ module.exports = {
     body: {
       import: './modules/body/body.js',
       dependOn: 'shared',
+    },
+    devServer: {
+      static: path.join(__dirname, './public'), 
+      open: true,
+      compress: true,
+      port: 8564,
     },
     footer: {
       import: './modules/footer/footer.js',
