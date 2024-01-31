@@ -7,17 +7,5 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
   },
-  module: {
-    rules: [
-      {
-        test: /\.(png|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
-    ],
-  },
-  resolve: {
-    fallback: {
-      "path": require.resolve("path-browserify")
-    }
-  },  
 };
+
