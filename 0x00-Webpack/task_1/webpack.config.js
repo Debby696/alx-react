@@ -1,23 +1,23 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: {
-    main: path.resolve(__dirname, './js/dashboard_main.js'),
-  },
+  entry: './js/dashboard_main.js',
   output: {
-    path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
+    path: path.resolve(__dirname, 'public'),
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
     ],
   },
+  resolve: {
+    fallback: {
+      "path": require.resolve("path-browserify")
+    }
+  },  
 };
