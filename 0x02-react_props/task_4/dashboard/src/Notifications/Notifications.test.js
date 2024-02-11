@@ -1,43 +1,36 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import Notifications from './Notifications';
+import React from "react";
+import { shallow } from "enzyme";
+import Notifications from "./Notifications";
 
-describe('<Notification />', () => {
-  it('renders without crashing', () => {
+
+describe("<Notifications />", () => {
+  it("Notifications renders without crashing", () => {
     const wrapper = shallow(<Notifications />);
-    shallow(<Notifications />);
+    expect(wrapper.exists()).toEqual(true);
   });
 
-  it('Notification Item with html', () => {
+  it("Notifications renders Notification Item and first item has correct html", () => {
     const wrapper = shallow(<Notifications displayDrawer />);
-    const nItem = wrapper.find('NotificationItem');
-    expect(nItem).toBeDefined();
-    expect(nItem.first().html()).toEqual(
-      '<li data-notification-type="default">New course available</li>'
-    );
+    expect(wrapper.find("NotificationItem")).toBeDefined();
+    expect(wrapper.find("NotificationItem").first().html()).toEqual('<li data-notification-type="default">New course available</li>');
   });
 
-  it('menuItem with displayDrawer false', () => {
+  it("menu item is being displayed when displayDrawer is false", () => {
     const wrapper = shallow(<Notifications />);
-    const mItem = wrapper.find('div.menuItem');
-    expect(mItem).toHaveLength(1);
+    expect(wrapper.find("div.menuItem")).toHaveLength(1);
   });
 
-  it('Notification with displayDrawer false', () => {
+  it("div.Notifications is not being displayed when displayDrawer is false", () => {
     const wrapper = shallow(<Notifications />);
-    const dNoti = wrapper.find('div.Notifications');
-    expect(dNoti).toHaveLength(0);
+    expect(wrapper.find("div.Notifications")).toHaveLength(0);
   });
 
-  it('menuItem with displayDrawer true', () => {
+  it("menu item is being displayed when displayDrawer is true", () => {
     const wrapper = shallow(<Notifications displayDrawer />);
-    const mItem = wrapper.find('div.menuItem');
-    expect(mItem).toHaveLength(1);
+    expect(wrapper.find("div.menuItem")).toHaveLength(1);
   });
-
-  it('displayDrawer is true', () => {
+  it("div.Notifications is being displayed when displayDrawer is true", () => {
     const wrapper = shallow(<Notifications displayDrawer />);
-    const dNoti = wrapper.find('div.Notifications');
-    expect(dNoti).toHaveLength(1);
+    expect(wrapper.find("div.Notifications")).toHaveLength(1);
   });
 });
